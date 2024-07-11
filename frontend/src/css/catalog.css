@@ -1,0 +1,63 @@
+/* src/css/catalog.css */
+
+.Catalog {
+  padding: 20px;
+}
+
+.filters {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.filter {
+  flex: 1;
+  margin: 0 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.filter label {
+  margin-bottom: 5px;
+}
+
+.filter-buttons {
+  display: flex;
+  align-items: center;
+  margin: 0 10px;
+}
+
+.filter-buttons button {
+  margin: 0 5px;
+}
+
+.car-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+
+.most-rented {
+  background-color: #f5f6f6;
+  padding-left: 10%;
+  padding-right: 10%;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  display: flex;
+  flex-direction: column; /* Nouvelle propriété pour aligner les éléments verticalement */
+  align-items: flex-start; /* Aligne les éléments à gauche */
+}
+
+.most-rented-subtitle {
+  margin-top: 10px; /* Ajout d'une marge pour laisser de l'espace entre les titres */
+}
+
+.most-rented-title {
+  color: #0F0E43;
+}
+
+.most-rented-subtitle {
+  color: #0F0E43;
+  opacity: 50%;
+}

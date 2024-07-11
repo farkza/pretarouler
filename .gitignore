@@ -1,0 +1,17 @@
+frontend/node_modules/
+*.log
+backend/venv/
+backend/__pycache__/
+.env
+dump_mongodb.sh
+docker-compose.yml
+.DS_Store
+frontend/build/
+frontend/dist/
+frontend/node_modules/
+frontend/.next/
+frontend/out/
+frontend/package-lock.json
+backend/poetry.lock
+*.swp
+*~

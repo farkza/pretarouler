@@ -1,0 +1,63 @@
+/* Styles pour la page de connexion */
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #181413;
+  color: #fff;
+}
+
+.logo {
+  width: 150px; /* Ajustez la taille du logo selon vos besoins */
+  margin-bottom: 20px;
+}
+
+h2 {
+  margin-bottom: 20px;
+  font-size: 24px;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 300px; /* Limite la largeur du formulaire */
+}
+
+.login-input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: none;
+  border-radius: 5px;
+}
+
+.login-input::placeholder {
+  color: #ccc;
+}
+
+.form-footer {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.create-account-btn {
+  background: none;
+  border: none;
+  color: #4743FB;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.login-btn {
+  background-color: #4743FB;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+}

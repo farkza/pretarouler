@@ -1,0 +1,45 @@
+/* Styles pour la section FAQ */
+.faq-section {
+  padding: 50px 10%;
+  margin-bottom: 50px;
+}
+
+.faq-title {
+  text-align: center;
+  font-size: 36px;
+  margin-bottom: 30px;
+}
+
+.faq-item {
+  cursor: pointer;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column; /* Permet d'afficher la réponse en dessous de la question */
+}
+
+.faq-question {
+  font-size: 24px;
+  color: #0F0E43;
+  display: flex; /* Pour aligner la question et le chevron horizontalement */
+  justify-content: space-between;
+  align-items: center; /* Aligne verticalement le chevron avec le texte */
+  text-decoration: none; /* Enlève le soulignement */
+  cursor: pointer;
+}
+
+.faq-answer {
+  margin-top: 10px;
+  padding: 10px;
+  border: none; /* Enlève le contour */
+}
+
+.chevron {
+  font-size: 24px;
+  font-weight: bold; /* Augmente la graisse du chevron */
+  margin-left: auto;
+  transition: transform 0.3s ease; /* Ajoute une transition pour une animation fluide */
+}
+
+.chevron.open {
+  transform: rotate(180deg); /* Rotation du chevron lorsque la section est ouverte */
+}

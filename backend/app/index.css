@@ -1,0 +1,31 @@
+body {
+    background-color: #181413;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.element {
+    margin-bottom: 20px;
+}
+
+#head_img {
+    width: 200px;
+    height: auto;
+}
+
+#head_subtitle {
+    color: white;
+    font-family: "Gotham Medium", sans-serif;
+    font-size: 30px;
+    text-align: center;
+    margin: 0;
+}

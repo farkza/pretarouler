@@ -1,0 +1,26 @@
+.reservation-page {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+  }
+  
+  .reservation-left {
+    flex: 1;
+  }
+  
+  .reservation-right {
+    flex: 1;
+    padding-left: 20px;
+  }
+  
+  .reservation-details {
+    border: 1px solid #ccc;
+    padding: 20px;
+  }
+  
+  .return-home-link {
+    display: block;
+    margin-top: 20px;
+    text-align: center;
+  }
+  

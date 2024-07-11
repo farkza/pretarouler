@@ -1,0 +1,240 @@
+@import url('https://fonts.googleapis.com/css2?family=Proxima+Nova:wght@400;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Proxima Nova', sans-serif;
+}
+
+.car-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.main-container {
+    position: relative;
+}
+
+.car-container {
+    position: relative; /* Position relative pour permettre le positionnement absolu de .car-model */
+    margin-top: -5%; 
+}
+
+.car-container h1 {
+    font-size: 13.021vw; /* Taille du titre */
+    color: #000000; /* Couleur du titre */
+    opacity: 20%;
+    text-align: center;
+    position: absolute;
+    top: 10%; /* Ajustez cette valeur pour remonter le texte */
+    left: 50%;
+    transform: translate(-50%, -50%);
+    white-space: nowrap;
+    z-index: 1;
+}
+
+.car-img {
+    margin-top: 100px; /* Ajustez cette valeur pour baisser l'image */
+}
+
+.car-img img {
+    max-width: 62.5vw;
+    z-index: 2; /* Devant le titre */
+    position: relative;
+}
+
+.car-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 50px;
+    text-align: center;
+    width: 55%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 50px;
+}
+
+.car-info-item {
+    padding: 7px;
+    display: flex;
+    flex-direction: column;
+}
+
+.car-info-value {
+    font-size: 22px;
+    font-weight: bold;
+    color: #0F0E43;
+}
+
+.car-info-title {
+    font-size: 12px;
+    color: #0F0E43;
+    margin-top: 10%;
+    opacity: 50%;
+}
+
+.car-info-separator {
+    width: 1.5px;
+    height: 50px;
+    background-color: black;
+    opacity: 20%;
+}
+
+.reserve-button {
+    background-color: #4743FB;
+    color: #fff;
+    border: none;
+    padding: 10px 25px;
+    font-size: 15px;
+    border-radius: 20px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.reserve-container {
+    display: flex;
+    align-items: center;
+}
+
+/* Styles pour la section most-rented */
+.most-rented {
+    background-color: #f5f6f6;
+    padding-left: 10%;
+    padding-right: 10%;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    display: flex;
+    flex-direction: column; /* Nouvelle propriété pour aligner les éléments verticalement */
+    align-items: flex-start; /* Aligne les éléments à gauche */
+}
+
+.most-rented-subtitle {
+    margin-top: 10px; /* Ajout d'une marge pour laisser de l'espace entre les titres */
+}
+
+.most-rented-title {
+    color: #0F0E43;
+}
+
+.most-rented-subtitle {
+    color: #0F0E43;
+    opacity: 50%;
+}
+
+/* Styles pour la section bottom */
+.bottom-section {
+    background-color: #050523;
+    color: #FFFFFF;
+    padding: 100px 10%;
+    text-align: left;
+    margin-top: 40px;
+}
+
+.bottom-section-title {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.bottom-section-subtitle {
+    font-size: 24px;
+    opacity: 0.7;
+    margin-bottom: 30px;
+}
+
+.bottom-section-button {
+    background-color: #4743FB;
+    color: #FFFFFF;
+    border: none;
+    padding: 15px 40px;
+    font-weight: 700;
+    font-size: 20px;
+    border-radius: 25px;
+    cursor: pointer;
+}
+
+.advertisement {
+    background-color: #050523;
+    color: #FFFFFF;
+    padding: 100px 10%;
+    text-align: center;
+}
+
+footer {
+    text-align: center;
+}
+
+/* Media queries pour les petits écrans (téléphones) */
+@media (max-width: 800px) {
+    .car-container h1 {
+        top: 5%; /* Ajuster la position du texte */
+    }
+
+    .car-img {
+        margin-top: 50px; /* Réduire l'espacement supérieur */
+    }
+
+    .car-info {
+        flex-direction: row;
+        flex-wrap: wrap;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .car-info-item {
+        flex: 1;
+        min-width: 25%;
+        text-align: center;
+    }
+
+    .car-info-separator {
+        display: none; /* Masquer les séparateurs sur les petits écrans */
+    }
+
+    .reserve-container {
+        margin-top: 20px; /* Ajouter un espacement supérieur pour le bouton de réservation */
+        width: 100%;
+        justify-content: center; /* Centrer le bouton de réservation */
+    }
+
+    .reserve-button {
+        width: 80%; /* Assurez-vous que le bouton prend toute la largeur disponible */
+        text-align: center;
+    }
+}
+
+/* Media queries pour les écrans moyens (tablettes) */
+@media (min-width: 1000px) and (max-width: 1000px) {
+
+    .car-img {
+        margin-top: 75px; /* Ajustez cette valeur pour baisser l'image sur tablette */
+    }
+
+    .car-info {
+        width: 90%; /* Ajustez la largeur de la section des infos sur tablette */
+    }
+
+    .car-info-item {
+        flex: 1;
+        min-width: 20%;
+        text-align: center;
+    }
+
+    .reserve-container {
+        margin-top: 20px; /* Ajouter un espacement supérieur pour le bouton de réservation */
+        width: 100%;
+        justify-content: center; /* Centrer le bouton de réservation */
+    }
+
+    .reserve-button {
+        width: 60%; /* Assurez-vous que le bouton prend une largeur adaptée pour tablette */
+        text-align: center;
+    }
+}
+
