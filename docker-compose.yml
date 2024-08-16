@@ -1,0 +1,29 @@
+services:
+  mongodb:
+    build: ./mongodb
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./mongodb/mongod.conf:/etc/mongod.conf
+    environment:
+      - MONGO_INITDB_DATABASE=pretarouler
+
+  backend:
+    build: ./backend
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend:/app
+    depends_on:
+      - mongodb
+    environment:
+      - MONGO_URL=mongodb://mongodb:27017/
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend:/app
+    depends_on:
+      - backend
