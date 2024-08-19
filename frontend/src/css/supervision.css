@@ -1,0 +1,67 @@
+.supervision-container {
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+    font-family: Arial, sans-serif;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.stats {
+    margin-bottom: 20px;
+}
+
+.stats p {
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+table th, table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+table th {
+    background-color: #f4f4f4;
+}
+
+.status-in-progress {
+    color: #FFA500;
+    font-weight: bold;
+}
+
+.status-completed {
+    color: #28a745; 
+    font-weight: bold;
+}
+
+button {
+    background-color: #d9534f;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+button:hover {
+    background-color: #c9302c;
+}
+
+.restricted-access {
+    text-align: center;
+    color: #d9534f;
+    font-size: 24px;
+    margin-top: 50px;
+}

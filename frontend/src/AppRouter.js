@@ -5,6 +5,7 @@ import Home from './pages/home';
 import Catalog from './pages/catalog';
 import Reservation from './pages/reservation';
 import Login from './pages/login';
+import Supervision from './pages/supervision';
 import CreateAccount from './pages/CreateAccount';
 
 function AppRouter() {
@@ -14,8 +15,9 @@ function AppRouter() {
         <Route path="/" element={<Navigate to="/login" replace />} />
         <Route path="/home" element={<Home />} />
         <Route path="/catalog" element={<Catalog />} />
-        <Route path="/reservation/:carId" element={<Reservation />} /> {/* Route avec paramètre dynamique */}
+        <Route path="/reservation/:carId" element={<Reservation />} /> 
         <Route path="/login" element={<Login />} />
+        <Route path="/supervision" element={<Supervision />} />
         <Route path="/create-account" element={<CreateAccount />} />
       </Routes>
     </Router>
