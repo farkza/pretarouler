@@ -1,120 +1,7 @@
-/* Popup styles */
-.popup-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: #F5F6F6; /* Couleur de l'arrière-plan */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-}
-
-.popup-content {
-  background: #F5F6F6; /* Couleur de fond */
-  width: 90%; /* 90% de la largeur de la page */
-  max-width: 1200px;
-  display: flex;
-  flex-direction: column;
-  padding: 2.5%;
-  gap: 5%;
-  border-radius: 10px;
-}
-
-.popup-content .popup-left, 
-.popup-content .popup-right {
-  width: 55%; /* Largeur du bloc gauche */
-}
-
-.popup-content .popup-right {
-  width: 30%; /* Largeur du bloc droit */
-}
-
-.popup-content .popup-left,
-.popup-content .popup-right {
-  background: white;
-  padding: 20px;
-  border-radius: 8px;
-  box-sizing: border-box;
-}
-
-.popup-image-container {
-  background: rgba(15, 14, 67, 0.1);
-  padding: 10px;
-  text-align: center;
-  border-radius: 8px;
-}
-
-.popup-image-container img {
-  width: 100%;
-  height: auto;
-}
-
-.popup-right h3, 
-.popup-right h4 {
-  color: #0F0E43;
-}
-
-.popup-right .ratings {
-  color: #FF922B; /* Couleur des étoiles */
-  font-size: 24px; /* Taille des étoiles */
-}
-
-.popup-right .ratings::before {
-  content: "★★★★★"; /* Affichage des étoiles pleines */
-}
-
-.popup-right .ratings-count {
-  color: #0F0E43; /* Couleur du texte des avis */
-}
-
-.popup-content hr {
-  margin: 20px 0;
-  border: 0;
-  border-top: 1px solid #ccc;
-}
-
-.popup-content .features {
-  color: #0F0E43; /* Couleur du texte des fonctionnalités */
-}
-
-.popup-content .bottom-separator {
-  margin-top: 20px;
-  border-top: 1px solid #ccc;
-}
-
-.popup-content .price-reserve {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  color: #0F0E43; /* Couleur du texte du prix par jour */
-}
-
-.popup-content .price {
-  opacity: 0.3; /* Opacité du prix */
-}
-
-.popup-content .reserve-button {
-  background-color: #4743FB; /* Couleur de fond du bouton Réserver */
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-weight: bold;
-}
-
-.popup-content .reserve-button:hover {
-  background-color: #3733cc; /* Couleur de fond du bouton Réserver au survol */
-}
-
-/* Car card styles */
 .car-card {
   display: inline-block;
-  width: calc(33.33% - 20px); /* 33.33% pour trois cartes par ligne, avec 20px pour espacement */
-  margin: 10px; /* Espacement entre les cartes */
+  width: calc(33.33% - 20px);
+  margin: 10px;
   background-color: white;
   border-radius: 8px;
   padding: 10px;
@@ -125,6 +12,10 @@
 .car-card-details {
   padding: 20px;
   font-weight: 700;
+}
+
+.car-price{
+  color: #4743FB;
 }
 
 .car-card-details img {
@@ -142,51 +33,224 @@
   opacity: 50%;
 }
 
-.car-card-details p span:first-child {
-  color: #4743FB; /* Couleur pour la valeur journalière */
+/* Popup styles */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
-.car-card-details p span:last-child {
-  color: #0F0E43; /* Couleur pour "/jour" */
+.popup-content {
+  background: #f5f6f6;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  position: relative;
+  overflow: auto;
 }
+
+.popup-content-2 {
+  margin-top: 5%;
+}
+
+.popup-left {
+  width: 60%;
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-sizing: border-box;
+  float: left;
+  clear: both;
+  margin-left: 5%;
+}
+
+.popup-right {
+  width: 25%;
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-sizing: border-box;
+  float: right;
+  margin-right: 5%;
+}
+
+.popup-image-container {
+  background: rgba(15, 14, 67, 0.1);
+  padding: 10px;
+  text-align: center;
+  border-radius: 8px;
+  margin-top: 2%;
+  margin-bottom: 2%;
+}
+
+.popup-image-container img {
+  width: 100%;
+  height: auto;
+  margin-top: 10%;
+}
+
+.popup-right h3,
+.popup-right h4 {
+  color: #0f0e43;
+}
+
+.popup-right p {
+  margin: 10px 0;
+}
+
+
+/* Clearfix for floating elements */
+.popup-content::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.back-to-top-btn {
+  position: absolute;
+  top: 140px;
+  left: 5%;
+  color: #4743fb;
+  cursor: pointer;
+  font-weight: bold;
+  z-index: 10;
+}
+
+.back-to-top-btn:hover {
+  color: #3733cc;
+}
+
+.more-photos{
+  margin-top: 30px;
+  text-align: center;
+  color: #0F0E43;
+  font-weight: 700;
+}
+
+/* Car details in popup */
+.popup-right .car-model {
+  font-size: 24px;
+  color: #0f0e43;
+}
+
+.popup-right .car-brand {
+  font-size: 16px;
+  color: #0f0e43;
+  opacity: 0.3;
+}
+
+.stars-container {
+  color: #ff922b;
+  display: flex;
+  align-items: center;
+  margin-top: 5px;
+}
+
+.avis-container{
+  color: #0f0e43;
+}
+
+.star {
+  font-size: 12px;
+  margin-right: 2px;
+}
+
+.star:last-child {
+  margin-right: 0;
+}
+
+.separator {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  height: 1px;
+  background-color: rgba(15, 14, 67, 0.2);
+}
+
+.options {
+  color: #0f0e43;
+  margin-top: 10px;
+}
+
+.popup-overlay.scroll-lock {
+  overflow: hidden;
+}
+
+.popup-overlay.scroll-lock .popup-content {
+  overflow: hidden;
+}
+
+.price-container {
+  display: flex; /* Utilisation de Flexbox */
+  align-items: center; /* Aligner les éléments verticalement sur l'axe des colonnes */
+}
+
+.price-section {
+  display: flex; /* Utilisation de Flexbox pour les deux éléments de prix */
+  align-items: baseline; /* Alignement sur la ligne de base pour aligner les prix */
+  margin-right: 10px; /* Espacement entre les prix et le bouton Réserver */
+}
+
+.price {
+  font-size: 20px; /* Taille de police pour le prix */
+  margin-right: 5px; /* Espacement entre le prix et le symbole € */
+  color: #0F0E43;
+  font-weight: 700;
+}
+
+.price-per-day {
+  font-size: 14px; /* Taille de police pour /jour */
+  color: #0F0E43;
+  opacity: 30%;
+  margin-top: 2px; /* Espacement entre /jour et le prix */
+}
+
+.reserve-button {
+  padding: 15px 30px; /* Espacement intérieur du bouton */
+  background-color: #4743FB; /* Couleur de fond du bouton */
+  color: white; /* Couleur du texte du bouton */
+  text-decoration: none; /* Suppression de la décoration de lien par défaut */
+  border-radius: 15px; /* Bordure arrondie du bouton */
+  transition: background-color 0.3s ease; /* Transition fluide pour le changement de couleur de fond */
+}
+
+.reserve-button:hover {
+  background-color: #3935D0; /* Couleur de fond du bouton au survol */
+}
+
 
 /* Responsive styles */
 @media (max-width: 1200px) {
   .car-card {
-    width: calc(50% - 20px); /* Deux cartes par ligne sur les écrans de taille moyenne */
+    width: calc(50% - 20px);
   }
 }
 
 @media (max-width: 768px) {
   .car-card {
-    width: calc(50% - 20px); /* Deux cartes par ligne sur tablette */
+    width: calc(50% - 20px);
+  }
+  .popup-left {
+    width: 100%; /* Prend toute la largeur */
+    float: none; /* Annule le float */
+    margin-left: 0; /* Réinitialise la marge */
+  }
+
+  .popup-right {
+    width: 100%; /* Prend toute la largeur */
+    float: none; /* Annule le float */
+    margin-right: 0; /* Réinitialise la marge */
   }
 }
 
 @media (max-width: 576px) {
   .car-card {
-    width: calc(100% - 20px); /* Une carte par ligne sur les téléphones */
+    width: calc(100% - 20px);
   }
-}
-
-/* Ant Design Calendar Styles */
-.ant-picker-cell-in-view.ant-picker-cell-range-start .ant-picker-cell-inner,
-.ant-picker-cell-in-view.ant-picker-cell-range-end .ant-picker-cell-inner {
-  background: #0078FF; /* Couleur pour le jour début et fin */
-}
-
-.ant-picker-cell-in-view.ant-picker-cell-range-start .ant-picker-cell-inner:hover,
-.ant-picker-cell-in-view.ant-picker-cell-range-end .ant-picker-cell-inner:hover {
-  background: #005bb5; /* Couleur plus foncée au survol */
-}
-
-.ant-picker-cell-in-view.ant-picker-cell-range-hover .ant-picker-cell-inner,
-.ant-picker-cell-in-view.ant-picker-cell-range-hover-start .ant-picker-cell-inner,
-.ant-picker-cell-in-view.ant-picker-cell-range-hover-end .ant-picker-cell-inner {
-  background: rgba(0, 120, 255, 0.3); /* Couleur pour les jours intermédiaires */
-}
-
-.ant-picker-cell-in-view.ant-picker-cell-disabled .ant-picker-cell-inner {
-  background: #FF6058; /* Couleur pour les jours déjà réservés */
-  opacity: 1;
 }

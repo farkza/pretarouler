@@ -4,7 +4,6 @@ backend/venv/
 backend/__pycache__/
 .env
 dump_mongodb.sh
-docker-compose.yml
 .DS_Store
 frontend/build/
 frontend/dist/

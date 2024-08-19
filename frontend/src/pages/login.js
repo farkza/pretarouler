@@ -1,5 +1,6 @@
 // pages/Login.js
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom'; // Assurez-vous que vous utilisez react-router-dom pour la navigation
 import Cookies from 'js-cookie';
 import logo from '../img/pretarouler-logo.png';
 import '../css/login.css';
@@ -9,9 +10,11 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
 
+  const navigate = useNavigate(); // Utilisé pour la redirection
+
   const handleLogin = async (e) => {
     e.preventDefault();
-    
+
     try {
       const response = await fetch('http://localhost:8000/api/login', {
         method: 'POST',
@@ -51,7 +54,7 @@ const Login = () => {
       Cookies.set('user_email', userData.email);
 
       // Redirection après connexion réussie
-      window.location.href = `/home`; 
+      window.location.href = `/home`;
     } catch (error) {
       setError(error.message);
     }
@@ -80,7 +83,9 @@ const Login = () => {
         />
         {error && <p className="error-message">{error}</p>}
         <div className="form-footer">
-          <button type="button" className="create-account-btn">Créer un compte</button>
+          <button type="button" className="create-account-btn" onClick={() => navigate('/create-account')}>
+            Créer un compte
+          </button>
           <button type="submit" className="login-btn">Se connecter</button>
         </div>
       </form>

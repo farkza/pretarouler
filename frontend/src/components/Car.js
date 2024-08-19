@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import '../css/car.css';
 import { Link } from 'react-router-dom';
+import Navbar from './NavBar'; // Assurez-vous que le chemin d'importation soit correct
 
 const Car = ({ accessToken, selectedLocation, selectedBrand, sortOrder }) => {
   const [cars, setCars] = useState([]);
@@ -11,10 +12,8 @@ const Car = ({ accessToken, selectedLocation, selectedBrand, sortOrder }) => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    // Simulation de récupération des voitures depuis une API
     const fetchCars = async () => {
       try {
-        // Remplacez cette URL par votre API endpoint pour récupérer les voitures
         const response = await fetch('http://localhost:8000/api/cars');
         if (!response.ok) {
           throw new Error('Network response was not ok');
@@ -30,27 +29,24 @@ const Car = ({ accessToken, selectedLocation, selectedBrand, sortOrder }) => {
   }, []);
 
   useEffect(() => {
-    // Simulation de récupération des données utilisateur
     const fetchUserData = async () => {
+      if (!accessToken) return;
+
       try {
-        // Remplacez cette URL par votre API endpoint pour récupérer les données utilisateur
         const response = await fetch(`http://localhost:8000/api/get_user_by_token/${accessToken}`);
         if (!response.ok) {
           throw new Error('Failed to fetch user data');
         }
         const userData = await response.json();
-        setUserId(userData._id.toString()); // Convertir l'ID en chaîne de caractères
+        setUserId(userData._id.toString());
       } catch (error) {
         console.error('Error fetching user data:', error);
       }
     };
 
-    if (accessToken) {
-      fetchUserData();
-    }
+    fetchUserData();
   }, [accessToken]);
 
-  // Récupérer la ville de l'utilisateur si accessToken est fourni
   useEffect(() => {
     const fetchUserCity = async () => {
       if (!accessToken) return;
@@ -70,28 +66,22 @@ const Car = ({ accessToken, selectedLocation, selectedBrand, sortOrder }) => {
     fetchUserCity();
   }, [accessToken]);
 
-  // Filtrage des voitures en fonction des critères sélectionnés
   let filteredCars = cars;
 
-  // Filtrer les voitures par ville de l'utilisateur si accessToken est fourni
   if (accessToken && city) {
-    filteredCars = filteredCars.filter(car => car.city === city); // Adapter la logique selon votre modèle de données
+    filteredCars = filteredCars.filter(car => car.city === city);
   }
 
-  // Filtrer les voitures par selectedLocation
   if (selectedLocation && selectedLocation !== "") {
     filteredCars = filteredCars.filter(car => car.city === selectedLocation);
   }
 
-  // Filtrer les voitures par selectedBrand
   if (selectedBrand && selectedBrand !== "") {
     filteredCars = filteredCars.filter(car => car.brand === selectedBrand);
   }
 
-  // Exclure une voiture spécifique par son ID
   filteredCars = filteredCars.filter(car => car.id !== '664e2e2a23a8e0dcdc3e567f');
 
-  // Inverser l'ordre des voitures si l'ordre est "newest"
   if (sortOrder === "newest" && selectedLocation === "" && selectedBrand === "") {
     filteredCars = filteredCars.reverse();
   }
@@ -99,9 +89,41 @@ const Car = ({ accessToken, selectedLocation, selectedBrand, sortOrder }) => {
   const handleCardClick = car => {
     setSelectedCar(car);
     setIsPopupVisible(true);
+    document.body.style.overflow = 'hidden'; // Bloquer le scroll de la page
   };
 
   const closePopup = () => {
+    setIsPopupVisible(false);
+    setSelectedCar(null);
+    document.body.style.overflow = 'auto'; // Réactiver le scroll de la page
+  };
+
+  // Gérer le changement de page ou le retour en arrière
+  const handleNavigation = () => {
+    document.body.style.overflow = 'auto'; // Réactiver le scroll de la page lors du changement de page
+  };
+
+  // Utiliser useEffect pour écouter les changements de route
+  useEffect(() => {
+    const cleanupScrollLock = () => {
+      document.body.style.overflow = 'auto'; // Réactiver le scroll de la page lorsque le composant est démonté
+    };
+
+    if (isPopupVisible) {
+      document.body.style.overflow = 'hidden'; // Bloquer le scroll de la page lorsque la popup est ouverte
+    } else {
+      document.body.style.overflow = 'auto'; // Réactiver le scroll de la page lorsque la popup est fermée
+    }
+
+    window.addEventListener('popstate', handleNavigation); // Écouter les événements de navigation (retour arrière)
+    return () => {
+      window.removeEventListener('popstate', handleNavigation); // Désinscrire l'écouteur lors du démontage du composant
+      cleanupScrollLock(); // Assurer que le scroll est réactivé lors du démontage du composant
+    };
+  }, [isPopupVisible]);
+
+  // Fonction pour fermer la popup
+  const handlePopupClose = () => {
     setIsPopupVisible(false);
     setSelectedCar(null);
   };
@@ -115,7 +137,7 @@ const Car = ({ accessToken, selectedLocation, selectedBrand, sortOrder }) => {
             <h4>{car.brand}</h4>
             <img src={`http://localhost:8000${car.img}`} alt={`${car.brand} ${car.model}`} />
             <p>
-              <span>{car.price_per_day}€</span><span>/jour</span>
+              <span className="car-price">{car.price_per_day}€</span><span>/jour</span>
             </p>
           </div>
         </div>
@@ -124,25 +146,45 @@ const Car = ({ accessToken, selectedLocation, selectedBrand, sortOrder }) => {
       {isPopupVisible && selectedCar && (
         <div className="popup-overlay" onClick={closePopup}>
           <div className="popup-content" onClick={(e) => e.stopPropagation()}>
-            <div className="popup-left">
-              <div className="popup-image-container">
-                <img src={`http://localhost:8000${selectedCar.img}`} alt={`${selectedCar.brand} ${selectedCar.model}`} />
+            <Navbar /> {/* Inclure la Navbar ici */}
+            {/* Bouton "Retour" en haut à gauche de la popup */}
+            <div className="popup-content-2">
+              <p className="back-to-top-btn" onClick={handlePopupClose}>
+                Retour
+              </p>
+              <div className="popup-left">
+                <div className="popup-image-container">
+                  <img src={`http://localhost:8000${selectedCar.img}`} alt={`${selectedCar.brand} ${selectedCar.model}`} />
+                </div>
+                <p className='more-photos'>Autres photos à venir</p>
               </div>
-              <p>Autres photos à venir</p>
-            </div>
-            <div className="popup-right">
-              <h3>{selectedCar.model}</h3>
-              <h4>{selectedCar.brand}</h4>
-              <p><strong>Horsepower:</strong> {selectedCar.horsepower}</p>
-              <p><strong>Autonomy:</strong> {selectedCar.autonomy}</p>
-              <p><strong>Acceleration (0-100):</strong> {selectedCar.acceleration_0_100}s</p>
-              <p><strong>GPS:</strong> {selectedCar.GPS ? 'Yes' : 'No'}</p>
-              <p><strong>Air Conditioning:</strong> {selectedCar.air_conditioning ? 'Yes' : 'No'}</p>
-              <p><strong>Fuel Consumption:</strong> {selectedCar.fuel_consumption}L/100km</p>
-              <p><strong>Fuel Type:</strong> {selectedCar.fuel_type}</p>
-              <p><strong>City:</strong> {selectedCar.city}</p>
-              <p><strong>Price per day:</strong> {selectedCar.price_per_day}€</p>
-              <Link to={`/reservation/${selectedCar.id}`} className="reserve-button">Réserver</Link>
+              <div className="popup-right">
+                <h3 className="car-model">{selectedCar.model}</h3>
+                <h4 className="car-brand">{selectedCar.brand}</h4>
+                <div className="stars-container">
+                  {[...Array(5)].map((star, index) => (
+                    <span key={index} className="star">&#9733;</span>
+                  ))}
+                  <span className='avis-container'>(127 avis)</span>
+                </div>
+                <div className="separator" style={{ backgroundColor: 'rgba(15, 14, 67, 0.2)' }}></div>
+                <p><strong>Horsepower:</strong> {selectedCar.horsepower}</p>
+                <p><strong>Autonomy:</strong> {selectedCar.autonomy}</p>
+                <p><strong>Acceleration (0-100):</strong> {selectedCar.acceleration_0_100}s</p>
+                <p><strong>GPS:</strong> {selectedCar.GPS ? 'Yes' : 'No'}</p>
+                <p><strong>Air Conditioning:</strong> {selectedCar.air_conditioning ? 'Yes' : 'No'}</p>
+                <p><strong>Fuel Consumption:</strong> {selectedCar.fuel_consumption}L/100km</p>
+                <p><strong>Fuel Type:</strong> {selectedCar.fuel_type}</p>
+                <p><strong>City:</strong> {selectedCar.city}</p>
+                <div className="separator" style={{ backgroundColor: 'rgba(15, 14, 67, 0.2)' }}></div>
+                <div className="price-container">
+                  <div className="price-section">
+                    <p className="price">{selectedCar.price_per_day} €</p>
+                    <p className="price-per-day">/jour</p>
+                  </div>
+                  <Link to={`/reservation/${selectedCar.id}`} className="reserve-button">Réserver</Link>
+                </div>
+              </div>
             </div>
           </div>
         </div>

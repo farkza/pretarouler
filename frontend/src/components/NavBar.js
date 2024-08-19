@@ -55,13 +55,12 @@ const NavBar = () => {
           <li><Link to="/about" className={getNavLinkClass('/about')}>À propos</Link></li>
         </ul>
       </nav>
-      {userFirstName && (
+      {accessToken ? (
         <div className="user-info">
           <span onClick={handleLogout}>{userFirstName}</span> {/* Afficher le first_name */}
           <img src={userLogo} alt="User Logo" />
         </div>
-      )}
-      {!accessToken && (
+      ) : (
         <Link to="/login">
           <button className="login-button">Se connecter</button>
         </Link>

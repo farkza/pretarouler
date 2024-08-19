@@ -1,8 +1,10 @@
+// pages/ReservationPage.js
 import React, { useState, useEffect } from 'react';
 import { DatePicker, notification } from 'antd';
 import moment from 'moment';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import '../css/reservation.css';
+import Navbar from '../components/NavBar'; // Import de la Navbar
 
 const { RangePicker } = DatePicker;
 
@@ -14,7 +16,6 @@ const ReservationPage = () => {
   const [totalPrice, setTotalPrice] = useState(0);
   const [userId, setUserId] = useState('');
 
-  // Récupérer accessToken depuis le localStorage
   const accessToken = localStorage.getItem('access_token');
 
   useEffect(() => {
@@ -62,7 +63,7 @@ const ReservationPage = () => {
       const price = daysDifference * selectedCar.price_per_day;
       setTotalPrice(price);
     } else {
-      setTotalPrice(0); // Reset total price when dates change
+      setTotalPrice(0);
     }
   };
 
@@ -110,7 +111,6 @@ const ReservationPage = () => {
   };
 
   const disabledDateRange = (start, end) => {
-    // Implementez la logique de dates réservées ici si nécessaire
     return false;
   };
 
@@ -119,24 +119,27 @@ const ReservationPage = () => {
   }
 
   return (
-    <div className="reservation-page">
-      <div className="reservation-left">
-        <h2>Réserver {selectedCar.brand} {selectedCar.model}</h2>
-        <RangePicker
-          disabledDate={disabledDate}
-          disabledDateRange={disabledDateRange}
-          onChange={handleDateChange}
-        />
-      </div>
-      <div className="reservation-right">
-        <div className="reservation-details">
-          <h3>ID de la voiture : {selectedCar.id}</h3>
-          <p>Prix par jour : {selectedCar.price_per_day}€</p>
-          <h3>ID de l'utilisateur : {userId}</h3>
-          <h3>Prix total : {totalPrice}€</h3>
-          <button onClick={handleValidateReservation}>Payer</button>
+    <div>
+      <Navbar /> {/* Ajout de la Navbar */}
+      <div className="reservation-page">
+        <div className="reservation-left">
+          <h2>Réserver {selectedCar.brand} {selectedCar.model}</h2>
+          <RangePicker
+            disabledDate={disabledDate}
+            disabledDateRange={disabledDateRange}
+            onChange={handleDateChange}
+          />
         </div>
-        <Link to="/home" className="return-home-link">Retourner à l'accueil</Link>
+        <div className="reservation-right">
+          <div className="reservation-details">
+            <h3>ID de la voiture : {selectedCar.id}</h3>
+            <p>Prix par jour : {selectedCar.price_per_day}€</p>
+            <h3>ID de l'utilisateur : {userId}</h3>
+            <h3>Prix total : {totalPrice}€</h3>
+            <button onClick={handleValidateReservation}>Payer</button>
+          </div>
+          <Link to="/home" className="return-home-link">Retourner à l'accueil</Link>
+        </div>
       </div>
     </div>
   );
