@@ -29,9 +29,9 @@ Cette commande va construire les images Docker et lancer les conteneurs nécessa
 
 **Accès aux Services**
 
-Frontend (React.js) : http://localhost:3000
-Backend (Node.js) : http://localhost:8000
-Documentation API : http://localhost:8000/docs
+- Frontend (React.js) : http://localhost:3000
+- Backend (Node.js) : http://localhost:8000
+- Documentation API : http://localhost:8000/docs
 
 **Arrêt de l'Application**
 
