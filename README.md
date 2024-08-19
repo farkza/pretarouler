@@ -22,8 +22,6 @@ Bienvenue dans le projet Prêt à Rouler. Ce projet comprend un frontend en Reac
 
 3. **Lancez l'application avec Docker Compose :**
 
-Exécutez la commande suivante pour démarrer les services frontend et backend :
-
     ```bash
     docker-compose up
 
