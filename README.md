@@ -19,7 +19,6 @@ Bienvenue dans le projet Prêt à Rouler. Ce projet comprend un frontend en Reac
 
     ```bash
     cd pretarouler
-    ```
 
 3. **Lancez l'application avec Docker Compose :**
 
@@ -27,7 +26,6 @@ Exécutez la commande suivante pour démarrer les services frontend et backend :
 
     ```bash
     docker-compose up
-    ```
 
 Cette commande va construire les images Docker et lancer les conteneurs nécessaires pour le frontend et le backend.
 
